@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi - PetCare+</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulir Pendaftaran</h2>
+        <form id="registerForm">
+            <label for="fullName">Nama Lengkap:</label>
+            <input type="text" id="fullName" required>
+
+            <label for="address">Alamat:</label>
+            <input type="text" id="address" required>
+
+            <label for="birthPlace">Tempat Lahir:</label>
+            <input type="text" id="birthPlace" required>
+
+            <label for="birthDate">Tanggal Lahir:</label>
+            <input type="date" id="birthDate" required>
+
+            <div class="form-group">
+                <label for="gender">Jenis Kelamin:</label>
+                <div class="radio-container">
+                    <label>
+                        <input type="radio" name="gender" value="perempuan"> Perempuan
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="laki-laki"> Laki-laki
+                    </label>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="submit-btn">Daftar</button>
+            </div>          
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah reload halaman
+
+            let fullName = document.getElementById("fullName").value.trim();
+            let address = document.getElementById("address").value.trim();
+            let birthPlace = document.getElementById("birthPlace").value.trim();
+            let birthDate = document.getElementById("birthDate").value;
+            let gender = document.querySelector("input[name='gender']:checked").value;
+
+            if (fullName === "" || address === "" || birthPlace === "" || birthDate === "" || !gender) {
+                alert("Semua kolom harus diisi!");
+                return;
+            }
+
+            let userData = { fullName, address, birthPlace, birthDate, gender };
+            localStorage.setItem("user", JSON.stringify(userData));
+            alert("Registrasi berhasil! Anda akan diarahkan ke homepage.");
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
