@@ -7,21 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Manajemen Dokter Hewan</h1>
+    <h1>Formulir Daftar Dokter Hewan</h1>
 
     <form id="doctorForm">
-        <input type="text" id="doctorName" placeholder="Nama Dokter" required>
-        <input type="text" id="specialization" placeholder="Spesialisasi" required>
-        <input type="tel" id="phoneNumber" placeholder="Nomor Telepon" required>
-        <button type="submit">Tambah Dokter</button>
+        <div class="form-container">
+            <input type="text" id="doctorName" placeholder="Nama Dokter" required>
+            <input type="text" id="specialization" placeholder="Spesialisasi" required>
+            <input type="text" id="phoneNumber" placeholder="Nomor Telepon" required>
+            <input type="text" id="straktif" placeholder="STR Aktif" required>
+            <input type="text" id="deskripsi" placeholder="Deskripsi" required>
+            <button type="submit">Tambah/Update Dokter</button>
+        </div>
     </form>
 
+    <h2>Daftar Dokter</h2>
     <table id="doctorTable">
         <thead>
             <tr>
                 <th>Nama</th>
                 <th>Spesialisasi</th>
                 <th>Nomor Telepon</th>
+                <th>STR Aktif</th>
+                <th>Deskripsi</th>
                 <th>Aksi</th>
             </tr>
         </thead>

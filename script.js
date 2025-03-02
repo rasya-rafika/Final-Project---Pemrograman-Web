@@ -18,19 +18,21 @@ function addDoctor() {
     let name = document.getElementById("doctorName").value.trim();
     let specialization = document.getElementById("specialization").value.trim();
     let phone = document.getElementById("phoneNumber").value.trim();
+    let straktif = document.getElementById("straktif").value.trim();
+    let description = document.getElementById("deskripsi").value.trim();
 
-    if (name === "" || specialization === "" || phone === "") {
+    if (name === "" || specialization === "" || phone === "" || straktif === "" || description === "") {
         alert("Semua kolom harus diisi!");
         return;
     }
 
     if (editingIndex === -1) {
         // Tambah data baru
-        doctors.push({ name, specialization, phone });
+        doctors.push({ name, specialization, phone, straktif, description });
         alert("Dokter berhasil ditambahkan!");
     } else {
         // Update data yang diedit
-        doctors[editingIndex] = { name, specialization, phone };
+        doctors[editingIndex] = { name, specialization, phone, straktif, description };
         alert("Data dokter berhasil diperbarui!");
         editingIndex = -1; // Reset index edit
     }
@@ -49,6 +51,8 @@ function loadDoctors() {
             <td>${doctor.name}</td>
             <td>${doctor.specialization}</td>
             <td>${doctor.phone}</td>
+            <td>${doctor.straktif}</td>
+            <td>${doctor.description}</td>
             <td>
                 <button class="edit" onclick="editDoctor(${index})">Edit</button>
                 <button class="delete" onclick="deleteDoctor(${index})">Hapus</button>
@@ -64,6 +68,8 @@ function editDoctor(index) {
     document.getElementById("doctorName").value = doctor.name;
     document.getElementById("specialization").value = doctor.specialization;
     document.getElementById("phoneNumber").value = doctor.phone;
+    document.getElementById("straktif").value = doctor.straktif;
+    document.getElementById("deskripsi").value = doctor.description;
 
     editingIndex = index; // Menyimpan index yang sedang diedit
 
@@ -82,6 +88,7 @@ function deleteDoctor(index) {
 function saveDoctors() {
     localStorage.setItem("doctors", JSON.stringify(doctors));
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("registerForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Mencegah form submit secara default
