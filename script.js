@@ -89,6 +89,9 @@ function saveDoctors() {
     localStorage.setItem("doctors", JSON.stringify(doctors));
 }
 
+
+
+/*UNTUK REGISTRASI*/
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("registerForm").addEventListener("submit", function (event) {
         event.preventDefault(); // Mencegah form submit secara default
